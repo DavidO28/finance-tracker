@@ -1,12 +1,5 @@
 <template>
-  <h2>
-    Your balance is :
-    {{
-      transactionStore.total > 0
-        ? transactionStore.total
-        : 0
-    }}
-  </h2>
+  <h2>Your balance is: ${{ transactionStore.total }}</h2>
 </template>
 
 <script setup lang="ts">

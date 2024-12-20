@@ -1,3 +1,15 @@
 <template>
-    <h3>Income: $00</h3>
+  <h3>Income: ${{ transactionStore.income }}</h3>
 </template>
+
+<script setup lang="ts">
+  import { useTransactionStore } from '@/store/transaction'
+
+  const transactionStore = useTransactionStore()
+</script>
+
+<style scoped>
+  h3 {
+    color: #40ff40;
+  }
+</style>
