@@ -1,5 +1,5 @@
 <template>
-    <h3>Income: ${{ transactionStore.income }}</h3>
+    <h3>Total income: ${{ transactionStore.income }}</h3>
 </template>
 
 <script setup lang="ts">

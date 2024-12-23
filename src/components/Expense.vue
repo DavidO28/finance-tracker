@@ -1,5 +1,5 @@
 <template>
-  <h3>Expense: ${{ Math.abs(transactionStore.expense) }}</h3>
+  <h3>Total expense: ${{ Math.abs(transactionStore.expense) }}</h3>
 </template>
 
 <script setup lang="ts">

@@ -33,7 +33,7 @@
             inputmode="numeric"
             placeholder="Amount"
           />
-          <v-btn type="submit">{{ transactionType ? 'Adding expense' : 'Adding income' }}</v-btn>
+          <v-btn type="submit">{{ transactionType ? 'Add expense' : 'Add income' }}</v-btn>
         </v-form>
         <v-snackbar
           v-model="errorState"
