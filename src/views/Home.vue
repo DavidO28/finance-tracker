@@ -1,5 +1,8 @@
 <template>
-  <v-container>
+  <v-container
+    class="d-flex flex-column justify-center text-center"
+    max-width="1000px"
+  >
     <Header />
     <Balance />
     <v-container>

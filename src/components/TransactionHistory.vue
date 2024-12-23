@@ -1,16 +1,16 @@
 <template>
   <v-container v-show="sortedTransactions.length > 0">
-    <v-card>
-      <h3 class="mb-3">History</h3>
-      <ul>
-        <li
+    <v-card class="pa-7">
+      <h3 class="mb-3">Transaction history</h3>
+      <v-list>
+        <v-list-item
           v-for="transaction in sortedTransactions"
           :style="{ color: transaction.amount < 0 ? '#FF0000' : '#40FF40' }"
         >
           {{ transaction.text }}
           <span>${{ transaction.amount }}</span>
-        </li>
-      </ul>
+        </v-list-item>
+      </v-list>
     </v-card>
   </v-container>
 </template>

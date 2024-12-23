@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card class="pa-7">
-      <v-row class="d-flex flex-row align-center mb-3">
+      <v-row class="mb-3">
         <v-btn
           size="small"
           class="me-5"
@@ -17,7 +17,7 @@
           </v-tooltip>
         </v-btn>
         <h3 :style="{ color: transactionType ? '#FF0000' : '#40FF40' }">
-          {{ transactionType ? 'Adding expense' : 'Adding income' }}
+          Chosen transaction type: {{ transactionType ? 'Expense' : 'Income' }}
         </h3>
       </v-row>
       <v-col>
@@ -33,7 +33,7 @@
             inputmode="numeric"
             placeholder="Amount"
           />
-          <v-btn type="submit">Add new transaction</v-btn>
+          <v-btn type="submit">{{ transactionType ? 'Adding expense' : 'Adding income' }}</v-btn>
         </v-form>
         <v-snackbar
           v-model="errorState"
