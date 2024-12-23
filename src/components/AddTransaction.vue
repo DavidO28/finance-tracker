@@ -5,9 +5,17 @@
         <v-btn
           size="small"
           class="me-5"
-          icon="mdi-swap-horizontal"
+          rounded
           @click="switchTransactionType"
-        />
+        >
+          <v-icon>mdi-swap-horizontal</v-icon>
+          <v-tooltip
+            activator="parent"
+            location="bottom"
+          >
+            Change transaction type
+          </v-tooltip>
+        </v-btn>
         <h3 :style="{ color: transactionType ? '#FF0000' : '#40FF40' }">
           {{ transactionType ? 'Adding expense' : 'Adding income' }}
         </h3>
@@ -27,6 +35,26 @@
           />
           <v-btn type="submit">Add new transaction</v-btn>
         </v-form>
+        <v-snackbar
+          v-model="errorState"
+          timeout="2000"
+          rounded="pill"
+          color="red"
+        >
+          <p class="font-bold text-black text-center">
+            {{ errorMessage }}
+          </p>
+
+          <template v-slot:actions>
+            <v-btn
+              color="gray"
+              variant="text"
+              @click="errorState = false"
+            >
+              Close
+            </v-btn>
+          </template>
+        </v-snackbar>
       </v-col>
     </v-card>
   </v-container>
@@ -42,8 +70,15 @@
   const localText = ref<string>('')
   const localAmount = ref<string>('')
   const transactionType = ref<boolean>(false)
+  const errorState = ref<boolean>(false)
+  const errorMessage = ref<string>('')
 
   const handleSubmit = () => {
+    if (localText.value!.length === 0 || localAmount.value!.length === 0) {
+      errorState.value = true
+      return (errorMessage.value = "Empty text can't be added to notes")
+    }
+
     const amount = localAmount.value === '' ? 0 : parseFloat(localAmount.value)
 
     const newTransaction: transaction = {
