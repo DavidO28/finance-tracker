@@ -1,5 +1,7 @@
 <template>
-  <h2>Your balance is: ${{ transactionStore.total }}</h2>
+  <v-container>
+    <h2>Your balance is: ${{ transactionStore.total }}</h2>
+  </v-container>
 </template>
 
 <script setup lang="ts">

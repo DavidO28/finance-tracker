@@ -1,12 +1,14 @@
 <template>
-  <Header />
-  <Balance />
-  <div>
-    <Income />
-    <Expense />
-  </div>
-  <AddTransaction />
-  <TransactionHistory />
+  <v-container>
+    <Header />
+    <Balance />
+    <v-container>
+      <Income />
+      <Expense />
+    </v-container>
+    <AddTransaction />
+    <TransactionHistory />
+  </v-container>
 </template>
 
 <script setup lang="ts">

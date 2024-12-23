@@ -1,29 +1,35 @@
 <template>
-  <h3 :style="{ color: transactionType ? '#FF0000' : '#40FF40' }">
-    {{ transactionType ? 'Adding expense' : 'Adding income' }}
-    <button @click="switchTransactionType">
-      <img
-        src="../assets/switcher.png"
-        alt="transaction switcher"
-      />
-    </button>
-  </h3>
-  <form
-    @submit.prevent="handleSubmit"
-    :style="{ background: transactionType ? '#FF0000' : '#40FF40' }"
-  >
-    <input
-      v-model="localText"
-      type="text"
-      placeholder="Text"
-    />
-    <input
-      v-model="localAmount"
-      type="number"
-      placeholder="Amount"
-    />
-    <button type="submit">Add new transaction</button>
-  </form>
+  <v-container>
+    <v-card class="pa-7">
+      <v-row class="d-flex flex-row align-center mb-3">
+        <v-btn
+          size="small"
+          class="me-5"
+          icon="mdi-swap-horizontal"
+          @click="switchTransactionType"
+        />
+        <h3 :style="{ color: transactionType ? '#FF0000' : '#40FF40' }">
+          {{ transactionType ? 'Adding expense' : 'Adding income' }}
+        </h3>
+      </v-row>
+      <v-col>
+        <v-form @submit.prevent="handleSubmit">
+          <v-text-field
+            v-model="localText"
+            type="text"
+            placeholder="Text"
+          />
+          <v-text-field
+            v-model="localAmount"
+            type="number"
+            inputmode="numeric"
+            placeholder="Amount"
+          />
+          <v-btn type="submit">Add new transaction</v-btn>
+        </v-form>
+      </v-col>
+    </v-card>
+  </v-container>
 </template>
 
 <script setup lang="ts">
