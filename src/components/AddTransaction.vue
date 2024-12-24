@@ -73,7 +73,7 @@
   const handleSubmit = () => {
     if (localText.value!.length === 0 || localAmount.value!.length === 0) {
       errorState.value = true
-      return (errorMessage.value = "Empty text can't be added to notes")
+      return (errorMessage.value = "Empty field can't be added")
     }
 
     const amount = localAmount.value === '' ? 0 : parseFloat(localAmount.value)
