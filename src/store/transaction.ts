@@ -21,10 +21,17 @@ export const useTransactionStore = defineStore('transaction', () => {
       .reduce((sum, t) => sum + t.amount, 0)
   })
 
+  const deleteTransaction = (id: number) => {
+    transactions.value = transactions.value.filter(
+      (transaction) => transaction.id !== id,
+    )
+  }
+
   return {
     transactions,
     total,
     income,
     expense,
+    deleteTransaction,
   }
 })

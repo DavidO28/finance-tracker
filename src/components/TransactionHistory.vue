@@ -7,8 +7,15 @@
           v-for="transaction in sortedTransactions"
           :style="{ color: transaction.amount < 0 ? '#FF0000' : '#40FF40' }"
         >
-          {{ transaction.text }}
-          <span>${{ transaction.amount }}</span>
+          <span class="d-flex flex-row align-center justify-center">
+            {{ transaction.text }} ${{ transaction.amount }}
+            <v-icon
+              class="ms-3"
+              @click="transactionStore.deleteTransaction(transaction.id)"
+            >
+              mdi-delete
+            </v-icon>
+          </span>
         </v-list-item>
       </v-list>
     </v-card>

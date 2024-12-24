@@ -33,7 +33,9 @@
             inputmode="numeric"
             placeholder="Amount"
           />
-          <v-btn type="submit">{{ transactionType ? 'Add expense' : 'Add income' }}</v-btn>
+          <v-btn type="submit">
+            {{ transactionType ? 'Add expense' : 'Add income' }}
+          </v-btn>
         </v-form>
         <v-snackbar
           v-model="errorState"
@@ -82,9 +84,11 @@
     const amount = localAmount.value === '' ? 0 : parseFloat(localAmount.value)
 
     const newTransaction: transaction = {
+      id: Math.floor(Math.random() * 1000000),
       text: localText.value,
       amount: transactionType.value ? -amount : amount,
     }
+    console.log(newTransaction)
 
     transactionStore.transactions.push(newTransaction)
 
