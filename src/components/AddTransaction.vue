@@ -37,26 +37,19 @@
             {{ transactionType ? 'Add expense' : 'Add income' }}
           </v-btn>
         </v-form>
-        <v-snackbar
+        <!-- Error Snackbar -->
+        <Snackbar
           v-model="errorState"
-          timeout="2000"
-          rounded="pill"
-          color="red"
-        >
-          <p class="font-bold text-black text-center">
-            {{ errorMessage }}
-          </p>
+          :message="errorMessage"
+          type="error"
+        />
 
-          <template v-slot:actions>
-            <v-btn
-              color="gray"
-              variant="text"
-              @click="errorState = false"
-            >
-              Close
-            </v-btn>
-          </template>
-        </v-snackbar>
+        <!-- Success Snackbar -->
+        <Snackbar
+          v-model="successState"
+          message="Transaction added!"
+          type="success"
+        />
       </v-col>
     </v-card>
   </v-container>
@@ -66,6 +59,7 @@
   import { ref } from 'vue'
   import { useTransactionStore } from '@/store/transaction'
   import type { transaction } from '@/types'
+  import Snackbar from '@/components/Snackbar.vue'
 
   const transactionStore = useTransactionStore()
 
@@ -73,6 +67,7 @@
   const localAmount = ref<string>('')
   const transactionType = ref<boolean>(false)
   const errorState = ref<boolean>(false)
+  const successState = ref<boolean>(false)
   const errorMessage = ref<string>('')
 
   const handleSubmit = () => {
@@ -94,17 +89,11 @@
 
     localText.value = ''
     localAmount.value = ''
+
+    successState.value = true
   }
 
   const switchTransactionType = () => {
     transactionType.value = !transactionType.value
   }
 </script>
-
-<style scoped>
-  img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-  }
-</style>
