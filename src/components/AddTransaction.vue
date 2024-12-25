@@ -26,6 +26,8 @@
             v-model="localText"
             type="text"
             placeholder="Text"
+            maxlength="100"
+            @keyup="characterAmount"
           />
           <v-text-field
             v-model="localAmount"
@@ -69,6 +71,7 @@
   const errorState = ref<boolean>(false)
   const successState = ref<boolean>(false)
   const errorMessage = ref<string>('')
+  let timer: number
 
   const handleSubmit = () => {
     if (localText.value!.length === 0 || localAmount.value!.length === 0) {
@@ -95,5 +98,18 @@
 
   const switchTransactionType = () => {
     transactionType.value = !transactionType.value
+  }
+
+  const characterAmount = () => {
+    if (timer) {
+      clearTimeout(timer)
+    }
+
+    timer = setTimeout(() => {
+      if (localText.value.length === 100) {
+        errorState.value = true
+        errorMessage.value = 'You have reached maximum text length'
+      }
+    }, 1000)
   }
 </script>
