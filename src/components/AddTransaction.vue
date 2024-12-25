@@ -1,10 +1,10 @@
 <template>
   <v-container>
     <v-card class="pa-7">
-      <v-row class="mb-3">
+      <v-row class="mb-3 d-flex justify-center">
         <v-btn
           size="small"
-          class="me-5"
+          class="me-5 mb-3"
           rounded
           @click="switchTransactionType"
         >
