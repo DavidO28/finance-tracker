@@ -17,7 +17,7 @@
           </v-tooltip>
         </v-btn>
         <h3 :style="{ color: transactionType ? '#FF0000' : '#40FF40' }">
-          Chosen transaction type: {{ transactionType ? 'Expense' : 'Income' }}
+          Transaction type: {{ transactionType ? 'Expense' : 'Income' }}
         </h3>
       </v-row>
       <v-col>
@@ -25,15 +25,24 @@
           <v-text-field
             v-model="localText"
             type="text"
-            placeholder="Text"
+            label="Text"
+            placeholder="e.g. salary, groceries"
             maxlength="100"
             @keyup="characterAmount"
+            rounded
+            clearable
+            variant="outlined"
           />
           <v-text-field
             v-model="localAmount"
+            label="Amount"
             type="number"
             inputmode="numeric"
-            placeholder="Amount"
+            placeholder="e.g. 123 or 123.5"
+            rounded
+            clearable
+            variant="outlined"
+            prefix="$"
           />
           <v-btn type="submit">
             {{ transactionType ? 'Add expense' : 'Add income' }}

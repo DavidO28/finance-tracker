@@ -4,6 +4,7 @@
       <h3 class="mb-3">Transaction history</h3>
       <v-list>
         <v-list-item
+          lines="two"
           v-for="transaction in sortedTransactions"
           :key="transaction.id"
         >
@@ -14,10 +15,11 @@
           </span>
           <v-btn
             icon="mdi-delete"
-            class="ms-3 mb-1"
+            class="ms-3 mb-2"
             size="small"
             @click="handleDelete(transaction.id)"
           />
+          <v-divider></v-divider>
         </v-list-item>
         <!-- Deletion Snackbar -->
         <Snackbar
