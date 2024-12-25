@@ -2,23 +2,32 @@
   <v-container v-show="sortedTransactions.length > 0">
     <v-card class="pa-7">
       <h3 class="mb-3">Transaction history</h3>
+      <v-divider></v-divider>
       <v-list>
         <v-list-item
-          lines="two"
+          lines="three"
           v-for="transaction in sortedTransactions"
           :key="transaction.id"
         >
-          <span
-            :style="{ color: transaction.amount < 0 ? '#FF0000' : '#40FF40' }"
+          <div
+            class="d-flex flex-column flex-md-row justify-space-between align-center my-2"
           >
-            {{ transaction.text }} ${{ transaction.amount }}
-          </span>
-          <v-btn
-            icon="mdi-delete"
-            class="ms-3 mb-2"
-            size="small"
-            @click="handleDelete(transaction.id)"
-          />
+            <span class="transaction-description">
+              {{ transaction.text }}
+            </span>
+            <span
+              :style="{ color: transaction.amount < 0 ? '#FF0000' : '#40FF40' }"
+              class="float-start"
+            >
+              ${{ transaction.amount }}
+            </span>
+            <v-btn
+              icon="mdi-delete"
+              class="mx-3 my-2"
+              size="small"
+              @click="handleDelete(transaction.id)"
+            />
+          </div>
           <v-divider></v-divider>
         </v-list-item>
         <!-- Deletion Snackbar -->
@@ -51,3 +60,10 @@
     transactionStatus.value = true
   }
 </script>
+
+<style scoped>
+  .transaction-description {
+    word-break: break-all;
+    width: 300px;
+  }
+</style>

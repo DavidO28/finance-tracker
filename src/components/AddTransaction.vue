@@ -25,9 +25,9 @@
           <v-text-field
             v-model="localText"
             type="text"
-            label="Text"
+            label="Description"
             placeholder="e.g. salary, groceries"
-            maxlength="100"
+            maxlength="50"
             @keyup="characterAmount"
             rounded
             clearable
@@ -93,7 +93,7 @@
     const newTransaction: transaction = {
       id: Math.floor(Math.random() * 1000000),
       text: localText.value,
-      amount: transactionType.value ? -amount : amount,
+      amount: transactionType.value ? -amount : amount
     }
     console.log(newTransaction)
 
@@ -115,10 +115,10 @@
     }
 
     timer = setTimeout(() => {
-      if (localText.value.length === 100) {
+      if (localText.value.length === 50) {
         errorState.value = true
         errorMessage.value = 'You have reached maximum text length'
       }
-    }, 1000)
+    }, 500)
   }
 </script>
