@@ -19,7 +19,7 @@
               :style="{ color: transaction.amount < 0 ? '#FF0000' : '#40FF40' }"
               class="float-start"
             >
-              ${{ transaction.amount }}
+              ${{ transaction.amount.toLocaleString() }}
             </span>
             <v-btn
               icon="mdi-delete"
