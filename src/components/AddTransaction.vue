@@ -1,6 +1,9 @@
 <template>
   <v-container>
-    <v-card class="pa-7">
+    <v-card
+      class="pa-7"
+      variant="outlined"
+    >
       <v-row class="mb-3 d-flex justify-center">
         <v-btn
           size="small"
@@ -93,7 +96,7 @@
     const newTransaction: transaction = {
       id: Math.floor(Math.random() * 1000000),
       text: localText.value,
-      amount: transactionType.value ? -amount : amount
+      amount: transactionType.value ? -amount : amount,
     }
     console.log(newTransaction)
 
