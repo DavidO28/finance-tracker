@@ -91,14 +91,17 @@
       return (errorMessage.value = "Empty field can't be added")
     }
 
-    const amount = localAmount.value === '' ? 0 : parseFloat(localAmount.value)
+    let amount = localAmount.value === '' ? 0 : parseFloat(localAmount.value)
+
+    if (amount < 0) {
+      amount = Math.abs(amount)
+    }
 
     const newTransaction: transaction = {
       id: Math.floor(Math.random() * 1000000),
       text: localText.value,
       amount: transactionType.value ? -amount : amount,
     }
-    console.log(newTransaction)
 
     transactionStore.transactions.push(newTransaction)
 
