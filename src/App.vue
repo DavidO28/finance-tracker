@@ -1,11 +1,11 @@
 <template>
   <main>
     <section>
-      <RouterView />
+      <Home />
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
-  import { RouterView } from 'vue-router'
+  import Home from './views/Home.vue'
 </script>
